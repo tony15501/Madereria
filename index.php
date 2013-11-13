@@ -1,0 +1,80 @@
+
+  
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="jquery/bootstrap.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="jquery/bootstrap-responsive.css">
+<title>Inicio de sesión</title>
+<style type="text/css">
+  body {
+	padding-top: 80px;
+	padding-b
+ottom: 60px;
+	background-color: #fff;
+  }
+
+  .form-signin {
+	max-width: 400px;
+	padding: 19px 29px 29px;
+	margin: 0 auto 20px;
+	
+  }
+  .form-signin .form-signin-heading,
+  .form-signin .checkbox {
+	margin-bottom: 10px;
+  }
+  .form-signin input[type="text"],
+  .form-signin input[type="password"] {
+	font-size: 16px;
+	height: auto;
+	margin-bottom: 10px;
+	padding: 7px 9px;
+  }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+
+<form action="phpfunciones/validarusuario.php" method="post" name="formularioAcceso" class="form-signin">
+	<legend><font size="+3">Inicio de sesión</legend>
+	
+	
+	﻿    <input name="Username" type="text" class="input-block-level" id="Username" placeholder="Usuario" required="required" title="Usuario es obligatorio">
+    <input name="Password" type="password" class="input-block-level" id="Password" placeholder="Contraseña" required="required" title="Contraseña es obligatorio">
+  <font size="4"> <center><a href="ResetPassword/Validacion_captcha.php">¿Olvidaste la Contraseña?</a></center><p /> <p />
+	<input class="btn btn-primary btn-block btn-large" name="Accion" type="submit" value="Iniciar">
+	
+	
+</form>
+
+
+<?
+								
+								switch ($numError)
+								{
+									case 1:
+										echo "<script>alert('Usuario y/o Contraseña incorrectos o el usuario no existe');</script>";
+										echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=index.php'>";
+										break;
+									
+								}
+							?>
+<center>
+
+<img src="images/logo.jpg" width="280" height="280" alt="Smile"></center>
+
+</div>
+<script src="jquery/jquery.js"></script>
+<script src="jquery/bootstrap.js"></script>
+</body>
+</html>
+
+

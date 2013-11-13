@@ -1,0 +1,87 @@
+<head>
+
+	</head>
+
+	<?
+	//Renglones por pagina
+	$maximosRenglones=5;
+	
+	//Pagina solicitada
+	$pag = (int) $_GET["pag"];
+	if ($pag < 1)
+	{
+		$pag = 1;
+	}
+	$offset = ($pag-1) * $maximosRenglones;
+	include('php_conexion.php');
+
+	
+	//Conectar a la base de datos
+	$linkBaseDatos=conectarse();
+	
+	//consulta para obtener los clientes
+	$consulta="SELECT SQL_CALC_FOUND_ROWS * FROM inventario where Tipo_producto ='Tablas' LIMIT $offset, $maximosRenglones";
+	$consultaTotales="SELECT FOUND_ROWS() as total";
+	
+	$resultadoConsulta = mysql_query($consulta,$linkBaseDatos);
+	$resultadoConsultaTotal = mysql_query($consultaTotales,$linkBaseDatos);
+	
+	$rowTotal = mysql_fetch_assoc($resultadoConsultaTotal);
+	// Total de registros sin limit
+	$total = $rowTotal["total"];
+
+	?>
+
+
+	<table  class="listasResultados">
+   <thead>
+      <tr>
+         <td><h3>Nombre</h3></td>
+         <td><h3>Descripción</h3></td>
+          <td><h3>Cantidad</h3></td>
+          <td><h3>Medidas</h3></td>
+          <td><h3>Precio Compra</h3></td>
+          <td><h3>Precio Venta</h3></td>
+      </tr>
+   </thead>
+   <tbody>
+      <?php
+         while ($row = mysql_fetch_assoc($resultadoConsulta))
+         {
+            $Nombre = $row["Nombre"];
+            $Descripcion = $row["Descripcion"];
+			$Cantidad = $row["Cantidad"];
+			$Medidas = $row["Medidas"];
+         $Precio_compra = $row["Precio_compra"];
+         $Precio_venta = $row["Precio_venta"];
+         ?>
+         <tr>
+            <td><?php echo $Nombre; ?></td>
+            <td><?php echo $Descripcion; ?></td>
+            <td><?php echo $Cantidad; ?></td>
+            <td><?php echo $Medidas; ?></td>
+            <td><?php echo $Precio_compra; ?></td>
+            <td><?php echo $Precio_venta; ?></td>
+         </tr>
+         <?php
+         }
+      ?>
+   </tbody>
+   <tfoot>
+      <tr>
+         <td colspan="2">
+      <?php
+         $totalPag = ceil($total/$maximosRenglones);
+         $links = array();
+         for( $i=1; $i<=$totalPag ; $i++)
+         {
+            $links[] = "P&aacute;gina <a href=\"?pag=$i\">$i</a>"; 
+         }
+		 
+         echo implode(" - ", $links);
+		 echo "<br />Total de p&aacute;ginas $totalPag";
+      ?>
+         </td>
+      </tr>
+   </tfoot>
+</table>

@@ -1,0 +1,81 @@
+<head>
+
+	</head>
+
+	<?
+	//Renglones por pagina
+	$maximosRenglones=5;
+	
+	//Pagina solicitada
+	$pag = (int) $_GET["pag"];
+	if ($pag < 1)
+	{
+		$pag = 1;
+	}
+	$offset = ($pag-1) * $maximosRenglones;
+	
+	
+	//Conectar a la base de datos
+	$linkBaseDatos=conectarse();
+	
+	//consulta para obtener los clientes
+	$consulta="SELECT SQL_CALC_FOUND_ROWS * FROM usuario LIMIT $offset, $maximosRenglones";
+	$consultaTotales="SELECT FOUND_ROWS() as total";
+	
+	$resultadoConsulta = mysql_query($consulta,$linkBaseDatos);
+	$resultadoConsultaTotal = mysql_query($consultaTotales,$linkBaseDatos);
+	
+	$rowTotal = mysql_fetch_assoc($resultadoConsultaTotal);
+	// Total de registros sin limit
+	$total = $rowTotal["total"];
+
+	?>
+
+
+	<table  class="listasResultados">
+   <thead>
+      <tr>
+         <td><h3>Nombre</h3></td>
+         <td><h3>Apellidos</h3></td>
+          <td><h3>Username</h3></td>
+          <td><h3>Tipo_usuario</h3></td>
+      </tr>
+   </thead>
+   <tbody>
+      <?php
+         while ($row = mysql_fetch_assoc($resultadoConsulta))
+         {
+            $Nombre = $row["Nombre"];
+            $Apellidos = $row["Apellido_p"];
+			$Username = $row["Username"];
+			$Tipo_usuario = $row["Tipo_usuario"];
+         ?>
+         <tr>
+            <td><?php echo $Nombre; ?></td>
+            <td><?php echo $Apellidos; ?></td>
+            <td><?php echo $Username; ?></td>
+            <td><?php echo $Tipo_usuario; ?></td>
+         </tr>
+         <?php
+         }
+      ?>
+   </tbody>
+   <tfoot>
+      <tr>
+         <td colspan="2">
+      <?php
+         $totalPag = ceil($total/$maximosRenglones);
+         $links = array();
+         for( $i=1; $i<=$totalPag ; $i++)
+         {
+            $links[] = "P&aacute;gina <a href=\"?pag=$i\">$i</a>"; 
+         }
+		 
+         echo implode(" - ", $links);
+		 echo "<br />Total de p&aacute;ginas $totalPag";
+      ?>
+         </td>
+      </tr>
+   </tfoot>
+</table>
+	

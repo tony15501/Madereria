@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../jquery/bootstrap.css">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../jquery/bootstrap-responsive.css">
+<title>Registrar Producto</title>
+
+
+<style type="text/css">
+  body {
+	padding-top: 80px;
+	padding-bottom: 60px;
+	background-color: #fff;
+  }
+
+  .form-signin {
+	max-width: 400px;
+	padding: 19px 29px 29px;
+	margin: 0 auto 20px;
+	
+  }
+  .form-signin .form-signin-heading,
+  .form-signin .checkbox {
+	margin-bottom: 10px;
+  }
+  .form-signin input[type="text"],
+  .form-signin input[type="password"] {
+	font-size: 16px;
+	height: auto;
+	margin-bottom: 10px;
+	padding: 7px 9px;
+  }
+
+</style>
+</head>
+
+
+
+
+<body>	<center><form  action="../phpfunciones/RecibirInventario.php" method="post" class="form-signin">
+	<h1>Registrar Producto</h1> 
+	<table border="0">
+	
+<tr>
+<th><label>Nombre:</label></th>
+<th><input name="Nombre" type="text" required="required"/></th>
+</tr>
+
+<tr>
+<th><label>Descripción:</label></th>
+<th><input name="Descripcion" type="text" required="required" /></th>
+</tr>
+
+<tr>
+<th><label>Tipo de Producto:</label></th>
+<th><select name="Tipo_producto" required="required">
+  <option value="">Selecciona uno</option>
+  <option value="Tablas">Tablas</option>
+  <option value="Triplay">Triplay</option>
+  <option value="Moldura">Moldura</option>
+  <option value="Polines">Polines</option>
+  <option value="Tablon">Tablon</option>
+  <option value="Aserrin">Aserrin</option>  
+</select></th>
+</tr>
+
+<tr>
+<th><label>Categoria:</label></th>
+<th><select name="Categoria" required="required">
+  <option value="">Selecciona uno</option>
+  <option value="1ra Calidad">1ra Calidad</option>
+  <option value="2da Calidad">2da Calidad</option>
+  <option value="3ra Calidad">3ra Calidad</option>
+</select></th>
+</tr>
+
+<tr>
+<th><label>Cantidad</label></th>
+<th><input name="Cantidad" type="number" required="required" /></th>
+</tr>
+
+<tr>
+<th><label>Medidas:</label></th>
+<th><input name="Medidas" type="text" required="required" /></th>
+</tr>
+
+<tr>
+<th><label>Precio Compra:</label></th>
+<th><input name="Precio_compra" type="number" required="required" /></th>
+</tr>
+
+
+<tr>
+<th><label>Precio Venta:</label></th>
+<th><input name="Precio_venta" type="number" required="required" /></th>
+</tr>
+
+<tr>
+<th></th>
+<th><input type="submit" class="btn btn-primary btn-block btn-large" value="Registrar"/>
+</th>
+
+</tr>
+	</table>
+	
+	
+	
+</form>
+</body>
+</html>

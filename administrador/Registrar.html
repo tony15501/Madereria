@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../jquery/bootstrap.css">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../jquery/bootstrap-responsive.css">
+<title>Registrar usuario</title>
+
+
+<style type="text/css">
+  body {
+	padding-top: 80px;
+	padding-bottom: 60px;
+	background-color: #fff;
+  }
+
+  .form-signin {
+	max-width: 400px;
+	padding: 19px 29px 29px;
+	margin: 0 auto 20px;
+	
+  }
+  .form-signin .form-signin-heading,
+  .form-signin .checkbox {
+	margin-bottom: 10px;
+  }
+  .form-signin input[type="text"],
+  .form-signin input[type="password"] {
+	font-size: 16px;
+	height: auto;
+	margin-bottom: 10px;
+	padding: 7px 9px;
+  }
+
+</style>
+</head>
+
+
+
+
+<body>	<center><form  action="../phpfunciones/Recibir.php" method="post" class="form-signin">
+	<h1>Registrar Usuario</h1> 
+	<table border="0">
+	
+<tr>
+<th><label>Nombre:</label></th>
+<th><input name="Nombre" type="text" required="required"/></th>
+</tr>
+
+<tr>
+<th><label>Apellido Paterno:</label></th>
+<th><input name="Apellido_p" type="text" required="required" /></th>
+</tr>
+
+<tr>
+<th><label>Apellido Materno:</label></th>
+<th><input name="Apellido_m" type="text" required="required" /></th>
+</tr>
+
+<tr>
+<th><label>Usuario:</label></th>
+<th><input name="Username" type="text" required="required" /></th>
+</tr>
+
+<tr>
+<th><label>Password:</label></th>
+<th><input name="Password" type="password" required="required" /></th>
+</tr>
+
+<tr>
+<th><label>Tipo de usuario:</label></th>
+<th><select name="Tipo_usuario" required="required">
+  <option value="">Selecciona uno</option>
+  <option value="administrador">administrador</option>
+  <option value="cajero">cajero</option>
+  
+</select></th>
+</tr>
+
+<tr>
+<th><label>Pregunta:</label></th>
+<th><select name="Pregunta" required="required">
+  <option value="">Selecciona uno</option>
+  <option value="¿Como se llama tu mascota?">¿Cómo se llama tu mascota?</option>
+  <option value="¿En que ciudad naciste?">¿En qué ciudad naciste?</option>
+  <option value="¿Cual es tu color favorito?">¿Cual es tu color favorito?</option>
+  <option value="¿En qué ciudad vives?">¿En qué ciudad vives?</option>
+</select></th>
+</tr>
+
+
+<tr>
+<th><label>Respuesta:</label></th>
+<th><input name="Respuesta" type="text" required="required" /></th>
+</tr>
+
+<tr>
+<th></th>
+<th><input type="submit" class="btn btn-primary btn-block btn-large" value="Registrar"/>
+</th>
+
+</tr>
+	</table>
+	
+	
+	
+</form></center>
+</body>
+</html>
